@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="A daily collection of Chinese folklore, the Analects, and a traditional-inspired fortune-stick reflection."
+  />
+
+  <title>Fortune & Folklore</title>
+
+  <style>
+    :root {
+      --red: #8f1d21;
+      --dark-red: #5d1116;
+      --gold: #d5a73f;
+      --paper: #f7edda;
+      --paper-light: #fffaf0;
+      --ink: #30241f;
+      --muted: #76655c;
+      --border: rgba(93, 17, 22, 0.2);
+      --shadow: 0 18px 50px rgba(54, 21, 16, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(213, 167, 63, 0.18), transparent 35%),
+        linear-gradient(135deg, #f5e6ca, #fff9ed 55%, #ecd7b4);
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    .page-shell {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 58px 0 38px;
+      text-align: center;
+    }
+
+    .seal {
+      display: grid;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      place-items: center;
+      color: #fff8e8;
+      font-family: serif;
+      font-size: 1.7rem;
+      background: var(--red);
+      border: 3px double var(--gold);
+      box-shadow: 0 8px 24px rgba(93, 17, 22, 0.22);
+      transform: rotate(-3deg);
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: var(--dark-red);
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .tagline {
+      margin: 0 auto 16px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .date {
+      display: inline-block;
+      padding: 8px 14px;
+      color: var(--dark-red);
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 250, 240, 0.65);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      padding-bottom: 50px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(24px, 4vw, 44px);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background:
+        linear-gradient(rgba(255, 250, 240, 0.94), rgba(247, 237, 218, 0.96)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 24px,
+          rgba(143, 29, 33, 0.03) 25px
+        );
+      box-shadow: var(--shadow);
+    }
+
+    .card::before,
+    .card::after {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      content: "";
+      pointer-events: none;
+    }
+
+    .card::before {
+      top: 12px;
+      left: 12px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .card::after {
+      right: 12px;
+      bottom: 12px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .eyebrow {
+      margin-bottom: 13px;
+      color: var(--red);
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .story-title,
+    .fortune-heading {
+      margin-bottom: 20px;
+      color: var(--dark-red);
+      font-size: clamp(1.75rem, 4vw, 2.7rem);
+      font-weight: 500;
+      line-height: 1.12;
+    }
+
+    .story-text {
+      font-size: 1.08rem;
+      line-height: 1.85;
+    }
+
+.story-details {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.story-moral,
+.story-source {
+  font-family: Arial, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.story-moral {
+  margin-bottom: 13px;
+  color: var(--ink);
+}
+
+.story-source {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.story-details strong {
+  color: var(--dark-red);
+}
+
+.story-source a {
+  color: var(--red);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.story-source a:hover {
+  color: var(--dark-red);
+}
+
+.story-source a:focus-visible {
+  outline: 3px solid rgba(213, 167, 63, 0.7);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+    .fortune-card {
+      display: flex;
+      min-height: 500px;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .fortune-card .eyebrow {
+      text-align: left;
+    }
+
+/* ----------------------------------
+   Fortune-stick vessel
+---------------------------------- */
+
+.stick-container {
+  display: grid;
+  min-height: 340px;
+  flex: 1;
+  place-items: center;
+}
+
+.fortune-shaker {
+  position: relative;
+  width: 270px;
+  height: 330px;
+  display: grid;
+  place-items: center;
+  transform-origin: 50% 80%;
+  will-change: transform;
+}
+
+.fortune-vessel {
+  position: relative;
+  width: 180px;
+  height: 300px;
+  transform: rotate(11deg);
+  transform-origin: 50% 85%;
+}
+
+/* The dark opening visible behind the sticks */
+.vessel-opening {
+  position: absolute;
+  top: 91px;
+  left: 18px;
+  z-index: 1;
+  width: 150px;
+  height: 55px;
+  border: 5px solid #9f201f;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #41120f 0%,
+      #541814 43%,
+      #8d2520 66%,
+      #bd332c 68%,
+      #7c1817 100%
+    );
+  box-shadow:
+    inset 0 9px 12px rgba(0, 0, 0, 0.42),
+    0 3px 0 #64110f;
+}
+
+/* Group of wooden sticks */
+.fortune-sticks {
+  position: absolute;
+  top: 5px;
+  left: 29px;
+  z-index: 2;
+  width: 135px;
+  height: 155px;
+  transform-origin: 50% 100%;
+}
+
+/* Individual wooden fortune sticks */
+.wood-stick {
+  --stick-angle: 0deg;
+  --stick-height: 150px;
+  --stick-left: 52px;
+
+  position: absolute;
+  bottom: 0;
+  left: var(--stick-left);
+  width: 23px;
+  height: var(--stick-height);
+  overflow: hidden;
+  border: 1px solid #744017;
+  border-radius: 3px 3px 1px 1px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(74, 35, 10, 0.22),
+      transparent 16%,
+      rgba(255, 231, 156, 0.55) 42%,
+      transparent 62%,
+      rgba(74, 35, 10, 0.24)
+    ),
+    repeating-linear-gradient(
+      87deg,
+      transparent 0,
+      transparent 8px,
+      rgba(105, 55, 18, 0.14) 9px,
+      transparent 10px
+    ),
+    linear-gradient(#d69a43, #b86d28);
+  box-shadow:
+    inset 0 0 3px rgba(255, 235, 172, 0.7),
+    2px 3px 4px rgba(46, 18, 8, 0.28);
+  transform: rotate(var(--stick-angle));
+  transform-origin: 50% 100%;
+}
+
+/* Printed number at the top of every stick */
+.wood-stick::before {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  content: attr(data-number);
+  color: #35140b;
+  font-family: Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: -0.04em;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+/* Small red mark like traditional printed sticks */
+.wood-stick::after {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  width: 3px;
+  height: 25px;
+  content: "";
+  border-radius: 2px;
+  background: #7e1515;
+  transform: translateX(-50%);
+  opacity: 0.75;
+}
+
+/* Spread the sticks into an irregular bundle */
+.wood-stick:nth-child(1) {
+  --stick-left: 3px;
+  --stick-height: 137px;
+  --stick-angle: -14deg;
+}
+
+.wood-stick:nth-child(2) {
+  --stick-left: 16px;
+  --stick-height: 158px;
+  --stick-angle: -10deg;
+}
+
+.wood-stick:nth-child(3) {
+  --stick-left: 29px;
+  --stick-height: 146px;
+  --stick-angle: -7deg;
+}
+
+.wood-stick:nth-child(4) {
+  --stick-left: 40px;
+  --stick-height: 170px;
+  --stick-angle: -4deg;
+}
+
+.wood-stick:nth-child(5) {
+  --stick-left: 51px;
+  --stick-height: 151px;
+  --stick-angle: -1deg;
+}
+
+.wood-stick:nth-child(6) {
+  --stick-left: 62px;
+  --stick-height: 176px;
+  --stick-angle: 2deg;
+}
+
+.wood-stick:nth-child(7) {
+  --stick-left: 73px;
+  --stick-height: 155px;
+  --stick-angle: 5deg;
+}
+
+.wood-stick:nth-child(8) {
+  --stick-left: 85px;
+  --stick-height: 169px;
+  --stick-angle: 8deg;
+}
+
+.wood-stick:nth-child(9) {
+  --stick-left: 96px;
+  --stick-height: 145px;
+  --stick-angle: 11deg;
+}
+
+.wood-stick:nth-child(10) {
+  --stick-left: 106px;
+  --stick-height: 160px;
+  --stick-angle: 14deg;
+}
+
+.wood-stick:nth-child(11) {
+  --stick-left: 115px;
+  --stick-height: 140px;
+  --stick-angle: 17deg;
+}
+
+/* Red cylindrical holder */
+.vessel-body {
+  position: absolute;
+  top: 112px;
+  left: 17px;
+  z-index: 3;
+  width: 153px;
+  height: 177px;
+  overflow: hidden;
+  border-right: 3px solid #721513;
+  border-bottom: 4px solid #65110f;
+  border-left: 3px solid #8d1c19;
+  border-radius: 14px 14px 62px 62px / 10px 10px 25px 25px;
+  background:
+    linear-gradient(
+      90deg,
+      #801713 0%,
+      #b32923 15%,
+      #dc4434 38%,
+      #c42f29 63%,
+      #991c1b 85%,
+      #6e1110 100%
+    );
+  box-shadow:
+    inset 13px 0 16px rgba(255, 116, 76, 0.18),
+    inset -13px 0 18px rgba(68, 5, 5, 0.3),
+    8px 13px 18px rgba(64, 21, 12, 0.22);
+}
+
+/* Subtle vertical wear marks */
+.vessel-body::before {
+  position: absolute;
+  inset: 13px;
+  content: "";
+  opacity: 0.25;
+  background:
+    repeating-linear-gradient(
+      87deg,
+      transparent 0,
+      transparent 17px,
+      rgba(62, 5, 5, 0.4) 18px,
+      transparent 20px
+    );
+}
+
+/* Highlight on the red lacquer */
+.vessel-body::after {
+  position: absolute;
+  top: 15px;
+  left: 21px;
+  width: 22px;
+  height: 130px;
+  content: "";
+  border-radius: 50%;
+  background: linear-gradient(
+    rgba(255, 160, 115, 0.32),
+    rgba(255, 160, 115, 0)
+  );
+  transform: rotate(4deg);
+  filter: blur(2px);
+}
+
+/* Thick rims around the holder */
+.vessel-band {
+  position: absolute;
+  left: -5px;
+  z-index: 4;
+  width: calc(100% + 10px);
+  height: 20px;
+  border: 2px solid #751412;
+  background: linear-gradient(
+    #e54b38,
+    #be2823 48%,
+    #841715 53%,
+    #bd2b25
+  );
+  box-shadow: 0 3px 4px rgba(72, 10, 8, 0.3);
+}
+
+.vessel-band-top {
+  top: 0;
+  border-radius: 50%;
+}
+
+.vessel-band-bottom {
+  bottom: 14px;
+  border-radius: 45%;
+  opacity: 0.72;
+}
+
+/* Gold label on the front */
+.vessel-label {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  width: 47px;
+  min-height: 95px;
+  padding: 7px 4px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: #64110f;
+  font-size: 1.45rem;
+  font-weight: bold;
+  line-height: 1.25;
+  border: 2px solid #781816;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 8px,
+      rgba(100, 52, 9, 0.1) 9px
+    ),
+    #d9a84d;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 227, 144, 0.45),
+    2px 3px 4px rgba(54, 8, 7, 0.32);
+}
+
+/* Shadow beneath the vessel */
+.vessel-shadow {
+  position: absolute;
+  right: 36px;
+  bottom: 20px;
+  width: 185px;
+  height: 27px;
+  border-radius: 50%;
+  background: rgba(58, 19, 12, 0.2);
+  filter: blur(8px);
+  transform: rotate(9deg);
+}
+
+/* ----------------------------------
+   Shake animation
+---------------------------------- */
+
+.fortune-shaker.is-shaking {
+  animation: shake-vessel 1.35s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.fortune-shaker.is-shaking .fortune-sticks {
+  animation: rattle-sticks 160ms ease-in-out 8;
+}
+
+.fortune-shaker.is-shaking .wood-stick:nth-child(odd) {
+  animation: jump-stick 250ms ease-in-out 5 alternate;
+}
+
+.fortune-shaker.is-shaking .wood-stick:nth-child(even) {
+  animation: jump-stick 210ms 40ms ease-in-out 6 alternate-reverse;
+}
+
+@keyframes shake-vessel {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+
+  10% {
+    transform: translate(-7px, -3px) rotate(-4deg);
+  }
+
+  20% {
+    transform: translate(8px, 2px) rotate(5deg);
+  }
+
+  30% {
+    transform: translate(-9px, -5px) rotate(-5deg);
+  }
+
+  40% {
+    transform: translate(9px, 3px) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(-8px, -4px) rotate(-4deg);
+  }
+
+  60% {
+    transform: translate(7px, 2px) rotate(4deg);
+  }
+
+  70% {
+    transform: translate(-6px, -2px) rotate(-3deg);
+  }
+
+  80% {
+    transform: translate(5px, 1px) rotate(3deg);
+  }
+
+  90% {
+    transform: translate(-3px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes rattle-sticks {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(-2deg);
+  }
+}
+
+@keyframes jump-stick {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 -8px;
+  }
+}
+
+/* Disable motion when requested by the visitor */
+@media (prefers-reduced-motion: reduce) {
+  .fortune-shaker.is-shaking,
+  .fortune-shaker.is-shaking .fortune-sticks,
+  .fortune-shaker.is-shaking .wood-stick {
+    animation: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .fortune-shaker {
+    width: 230px;
+    transform: scale(0.88);
+  }
+}
+
+
+    .draw-button {
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 20px;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--dark-red);
+      border-radius: 3px;
+      background: var(--red);
+      box-shadow: 0 8px 18px rgba(93, 17, 22, 0.2);
+      cursor: pointer;
+      transition:
+        transform 160ms ease,
+        background 160ms ease;
+    }
+
+    .draw-button:hover:not(:disabled) {
+      background: var(--dark-red);
+      transform: translateY(-2px);
+    }
+
+    .draw-button:focus-visible {
+      outline: 3px solid rgba(213, 167, 63, 0.7);
+      outline-offset: 3px;
+    }
+
+    .draw-button:disabled {
+      cursor: default;
+      opacity: 0.65;
+    }
+
+    .fortune-result {
+      width: 100%;
+      padding: 25px 20px;
+      border: 1px solid var(--border);
+      background: rgba(255, 250, 240, 0.75);
+      animation: reveal 550ms ease both;
+    }
+
+    .fortune-result[hidden] {
+      display: none;
+    }
+
+    .fortune-number {
+      margin-bottom: 8px;
+      color: var(--red);
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .fortune-title {
+      margin-bottom: 15px;
+      color: var(--dark-red);
+      font-size: 1.7rem;
+    }
+
+    .fortune-poem {
+      margin-bottom: 20px;
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .fortune-reading {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .site-footer {
+      padding: 0 0 45px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .site-footer a {
+      color: var(--red);
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .site-header {
+        padding-top: 38px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .fortune-card {
+        min-height: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Refined visual identity: ink, cinnabar, jade and handmade paper */
+    :root {
+      --red: #9b2926;
+      --dark-red: #641b1b;
+      --gold: #b58a43;
+      --paper: #eee5d2;
+      --paper-light: #fbf7ed;
+      --ink: #252923;
+      --muted: #746e60;
+      --border: rgba(91, 57, 35, 0.23);
+      --jade: #526b5a;
+      --shadow: 0 20px 55px rgba(44, 37, 27, 0.12);
+    }
+
+    body {
+      color: var(--ink);
+      background-color: #e9e0cf;
+      background-image:
+        radial-gradient(ellipse at 12% 8%, rgba(181,138,67,.13), transparent 28%),
+        radial-gradient(ellipse at 88% 26%, rgba(82,107,90,.10), transparent 30%),
+        repeating-linear-gradient(0deg, rgba(80,60,35,.018) 0, rgba(80,60,35,.018) 1px, transparent 1px, transparent 5px),
+        linear-gradient(135deg, #e9e0cf, #f7f1e5 52%, #e5dac6);
+    }
+
+    .site-header {
+      position: relative;
+      padding: 54px 0 42px;
+      border-bottom: 1px solid rgba(91,57,35,.18);
+      background:
+        linear-gradient(180deg, rgba(251,247,237,.72), rgba(251,247,237,0));
+    }
+
+    .site-header::before,
+    .site-header::after {
+      position: absolute;
+      top: 42px;
+      width: min(18vw, 190px);
+      height: 2px;
+      content: "";
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .75;
+    }
+    .site-header::before { left: 4%; }
+    .site-header::after { right: 4%; }
+
+    .seal {
+      width: 58px;
+      height: 58px;
+      color: #f8efdd;
+      background: #922622;
+      border: 1px solid #d0ad68;
+      outline: 1px solid rgba(146,38,34,.65);
+      outline-offset: 4px;
+      box-shadow: 0 8px 20px rgba(70,25,20,.16);
+      transform: rotate(-5deg);
+    }
+
+    h1 {
+      font-family: "Noto Serif TC", "Songti SC", "SimSun", Georgia, serif;
+      letter-spacing: .015em;
+      font-weight: 500;
+    }
+
+    .tagline {
+      max-width: 560px;
+      font-family: "Noto Serif TC", "Songti SC", Georgia, serif;
+      letter-spacing: .035em;
+    }
+
+    .tagline::after {
+      display: block;
+      margin: 17px auto 0;
+      color: var(--jade);
+      content: "山海有灵 · 古今有知";
+      font-size: .88rem;
+      letter-spacing: .28em;
+    }
+
+    .date {
+      margin-top: 7px;
+      border-radius: 2px;
+      border-color: rgba(181,138,67,.5);
+      background: rgba(251,247,237,.72);
+      letter-spacing: .16em;
+    }
+
+    .content-grid { gap: 22px; }
+
+    .card {
+      border-radius: 2px;
+      border-color: rgba(91,57,35,.25);
+      background:
+        linear-gradient(rgba(251,247,237,.96), rgba(246,239,224,.97)),
+        repeating-linear-gradient(0deg, transparent, transparent 25px, rgba(100,40,30,.025) 26px);
+      box-shadow: 0 14px 38px rgba(54,43,29,.10);
+    }
+
+    .card::before, .card::after {
+      width: 28px;
+      height: 28px;
+      border-color: rgba(181,138,67,.8);
+    }
+
+    .eyebrow {
+      color: var(--jade);
+      letter-spacing: .2em;
+    }
+
+    .story-title, .fortune-heading, .fortune-title {
+      font-family: "Noto Serif TC", "Songti SC", "SimSun", Georgia, serif;
+      letter-spacing: .01em;
+    }
+
+    .story-text { color: #37372f; }
+
+    .story-details {
+      border-top-color: rgba(82,107,90,.28);
+    }
+
+    .fortune-card {
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(181,138,67,.10), transparent 55%),
+        linear-gradient(#fbf7ed, #f0e6d3);
+    }
+
+    .draw-button {
+      border-radius: 2px;
+      border-color: #641b1b;
+      background: linear-gradient(135deg, #a52d29, #791d1c);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .draw-button:hover:not(:disabled) {
+      background: linear-gradient(135deg, #84211f, #5f1718);
+    }
+
+    .fortune-result {
+      border-color: rgba(181,138,67,.55);
+      background: rgba(251,247,237,.9);
+    }
+
+    .analects-card {
+      position: relative;
+      overflow: hidden;
+      margin: 0 0 48px;
+      padding: clamp(28px, 5vw, 52px);
+      border: 1px solid rgba(91,57,35,.25);
+      background:
+        radial-gradient(ellipse at 92% 15%, rgba(82,107,90,.12), transparent 34%),
+        linear-gradient(120deg, rgba(251,247,237,.98), rgba(242,234,216,.98));
+      box-shadow: 0 14px 38px rgba(54,43,29,.09);
+    }
+
+    .analects-card::after {
+      position: absolute;
+      right: 26px;
+      bottom: -28px;
+      color: rgba(155,41,38,.055);
+      content: "論語";
+      font-family: "Noto Serif TC", "Songti SC", serif;
+      font-size: clamp(7rem, 17vw, 13rem);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .analects-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 25px;
+    }
+
+    .analects-topline .eyebrow { margin: 0; }
+
+    .analects-label {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .analects-chinese {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 18px;
+      color: var(--dark-red);
+      font-family: "Noto Serif TC", "Songti SC", "SimSun", serif;
+      font-size: clamp(1.7rem, 4.5vw, 2.65rem);
+      line-height: 1.65;
+      letter-spacing: .08em;
+    }
+
+    .analects-translation {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin-bottom: 23px;
+      color: #37372f;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .analects-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 18px;
+      padding-top: 17px;
+      border-top: 1px solid rgba(82,107,90,.25);
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: .78rem;
+      line-height: 1.65;
+    }
+
+    .analects-meta strong {
+      color: var(--dark-red);
+      font-weight: 700;
+    }
+
+    .analects-index {
+      display: inline-block;
+      padding: 4px 9px;
+      color: var(--jade);
+      border: 1px solid rgba(82,107,90,.35);
+      letter-spacing: .12em;
+    }
+
+    .site-footer {
+      max-width: 850px;
+      padding-bottom: 50px;
+    }
+
+    @media (max-width: 800px) {
+      .site-header::before, .site-header::after { display: none; }
+      .analects-topline { align-items: flex-start; flex-direction: column; }
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="page-shell">
+      <div class="seal" aria-hidden="true">福</div>
+
+      <h1>Fortune &amp; Folklore</h1>
+
+      <p class="tagline">
+        A story from long ago and a thought for the day ahead.
+      </p>
+
+      <time class="date" id="current-date"></time>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="content-grid">
+      <article class="card" aria-labelledby="story-title">
+        <p class="eyebrow">Today’s folklore</p>
+
+        <h2 class="story-title" id="story-title"></h2>
+
+        <div class="story-text" id="story-text"></div>
+
+ <div class="story-details">
+  <p class="story-moral">
+    <strong>Final observation:</strong>
+    <span id="story-moral"></span>
+  </p>
+
+  <p class="story-source">
+    <strong>Original source:</strong>
+    <a
+      id="story-source-link"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    ></a>
+  </p>
+</div>
+
+      </article>
+
+      <section class="card fortune-card" aria-labelledby="fortune-heading">
+        <p class="eyebrow">Today’s fortune stick</p>
+
+        <h2 class="fortune-heading" id="fortune-heading">
+          Ask the quiet question
+        </h2>
+
+        <div class="stick-container">
+		<div class="fortune-shaker" id="stick-art" aria-hidden="true">
+  <div class="fortune-vessel">
+    <div class="fortune-sticks">
+      <span class="wood-stick" data-number="03"></span>
+      <span class="wood-stick" data-number="12"></span>
+      <span class="wood-stick" data-number="27"></span>
+      <span class="wood-stick" data-number="36"></span>
+      <span class="wood-stick" data-number="41"></span>
+      <span class="wood-stick" data-number="52"></span>
+      <span class="wood-stick" data-number="64"></span>
+      <span class="wood-stick" data-number="71"></span>
+      <span class="wood-stick" data-number="80"></span>
+      <span class="wood-stick" data-number="88"></span>
+      <span class="wood-stick" data-number="93"></span>
+    </div>
+
+    <div class="vessel-opening"></div>
+
+    <div class="vessel-body">
+      <div class="vessel-band vessel-band-top"></div>
+
+      <div class="vessel-label">
+        <span>靈</span>
+        <span>籤</span>
+      </div>
+
+      <div class="vessel-band vessel-band-bottom"></div>
+    </div>
+  </div>
+
+  <div class="vessel-shadow"></div>
+</div>
+
+          <div
+            class="fortune-result"
+            id="fortune-result"
+            aria-live="polite"
+            hidden
+          >
+            <p class="fortune-number" id="fortune-number"></p>
+            <h3 class="fortune-title" id="fortune-title"></h3>
+            <p class="fortune-poem" id="fortune-poem"></p>
+            <p class="fortune-reading" id="fortune-reading"></p>
+          </div>
+        </div>
+
+        <button class="draw-button" id="draw-button" type="button">
+          Draw today’s stick
+        </button>
+      </section>
+    </div>
+
+    <section class="analects-card" aria-labelledby="analects-heading">
+      <div class="analects-topline">
+        <p class="eyebrow" id="analects-heading">Daily wisdom · 每日論語</p>
+        <span class="analects-label">A passage for reflection</span>
+      </div>
+      <p class="analects-chinese" id="analects-chinese" lang="zh-Hant"></p>
+      <p class="analects-translation" id="analects-translation"></p>
+      <div class="analects-meta">
+        <span class="analects-index" id="analects-index"></span>
+        <span><strong>Source:</strong> <cite>Sources of Chinese Tradition, Vol. 1: From Earliest Times to 1600</cite>, selections from the Analects (論語)</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-shell">
+    <p>
+  Daily entries are original summaries of selections from
+  <cite>The Classic of Mountains and Seas</cite> and
+  <cite>In Search of the Supernatural</cite>. Source links lead to
+  the texts hosted by the
+  <a
+    href="https://ctext.org/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Chinese Text Project
+  </a>.
+  Final observations are modern editorial reflections and are not
+  morals stated by the original works.
+    </p>
+
+    <p>
+      The Analects are presented in classical Chinese with an original English rendering prepared for this site.
+      Chapter references identify the passage; wording may differ among translations and editions.
+    </p>
+
+    <p>
+      Fortune readings are folklore-inspired prompts for reflection and
+      entertainment—not professional, financial, medical, or legal advice.
+    </p>
+  </footer>
+
+  <script>
+    /*
+      STARTER CONTENT
+
+      The site chooses a story using the current day of the year.
+
+      This starter has 12 stories, so they repeat during the year.
+      To provide a unique entry for every date, expand this array to
+      366 reviewed and cited stories.
+    */
+/*
+  These are original summaries of stories and figures recorded in:
+
+  1. The Classic of Mountains and Seas, or Shanhaijing
+     山海經
+
+  2. In Search of the Supernatural, also called
+     Records of Searching for the Divine or Soushen Ji
+     搜神記
+
+  The final observations are modern editorial reflections. They are
+  not translations or morals stated by the ancient texts themselves.
+
+  CText is linked as the online source. Traditions, translations,
+  chapter divisions, names, and interpretations may vary.
+*/
+
+const stories = [
+  {
+    title: "Jingwei Fills the Eastern Sea",
+    work: "The Classic of Mountains and Seas",
+    section: "Classic of the Northern Mountains",
+    text: `
+      <p>
+        On Fajiu Mountain lived a bird with a patterned head, a white
+        beak, and red feet. Its cry sounded like its own name:
+        Jingwei.
+      </p>
+
+      <p>
+        The bird was said to have once been Nüwa, a daughter of the
+        Flame Emperor. After she drowned while traveling on the
+        Eastern Sea, she returned in the form of Jingwei. She
+        continually carried twigs and stones from the western
+        mountains and dropped them into the sea, as though determined
+        to fill the waters that had taken her life.
+      </p>
+    `,
+    moral:
+      "Jingwei's task appears impossible, yet she continues. The image can represent grief transformed into purpose, as well as determination that refuses to be measured only by the likelihood of success.",
+    sourceUrl: "https://ctext.org/shan-hai-jing/bei-shan-jing",
+    sourceLabel:
+      "Classic of the Northern Mountains — Chinese Text Project"
+  },
+
+  {
+    title: "The Nine-Tailed Fox of Qingqiu",
+    work: "The Classic of Mountains and Seas",
+    section: "Classic of the Southern Mountains",
+    text: `
+      <p>
+        The land of Qingqiu was said to contain a creature shaped
+        like a fox but possessing nine tails. Its call resembled the
+        cry of an infant, drawing the listener toward something that
+        was not what it first appeared to be.
+      </p>
+
+      <p>
+        The text describes the fox as a dangerous eater of human
+        beings, while also attributing unusual protective power to
+        those who ate it. Later literature developed many different
+        images of the nine-tailed fox, but this early description is
+        brief, strange, and threatening.
+      </p>
+    `,
+    moral:
+      "An appealing or familiar sound does not guarantee harmless intentions. The creature also illustrates how folklore can change over time: a brief ancient monster may become a far more complex figure in later stories.",
+    sourceUrl: "https://ctext.org/shan-hai-jing/nan-shan-jing",
+    sourceLabel:
+      "Classic of the Southern Mountains — Chinese Text Project"
+  },
+
+  {
+    title: "Kua Fu Chases the Sun",
+    work: "The Classic of Mountains and Seas",
+    section: "Classic of Regions Beyond the Northern Seas",
+    text: `
+      <p>
+        Kua Fu, a mighty figure of enormous strength, set out to
+        pursue the sun. He followed it across the land until he drew
+        close to its path, but the heat left him desperately thirsty.
+      </p>
+
+      <p>
+        He drank from the Yellow River and the Wei River, yet even
+        their waters were not enough. He then hurried toward the
+        Great Marsh but died before he could reach it. The staff he
+        abandoned was said to become a forest, leaving shade and
+        nourishment for later travelers.
+      </p>
+    `,
+    moral:
+      "Great ambition may carry a cost when human limits are ignored. Even so, an unfinished journey can leave something valuable behind for people who follow.",
+    sourceUrl: "https://ctext.org/shan-hai-jing/hai-wai-bei-jing",
+    sourceLabel:
+      "Classic of Regions Beyond the Northern Seas — Chinese Text Project"
+  },
+
+  {
+    title: "Xingtian Dances Without a Head",
+    work: "The Classic of Mountains and Seas",
+    section: "Classic of Regions Beyond the Western Seas",
+    text: `
+      <p>
+        Xingtian challenged the Supreme Divinity for power. He was
+        defeated and beheaded, and his head was buried at Changyang
+        Mountain.
+      </p>
+
+      <p>
+        Defeat did not bring his resistance to an end. Xingtian made
+        eyes from his nipples and a mouth from his navel. Holding a
+        shield and an axe, he continued his fierce dance of defiance
+        even after losing his head.
+      </p>
+    `,
+    moral:
+      "Xingtian is an unsettling image of resistance that survives even catastrophic loss. The account can be read as admiration for indomitable resolve, but it can also ask when refusal to yield becomes an endless struggle.",
+    sourceUrl: "https://ctext.org/shan-hai-jing/hai-wai-xi-jing",
+    sourceLabel:
+      "Classic of Regions Beyond the Western Seas — Chinese Text Project"
+  },
+
+  {
+    title: "The Torch Dragon",
+    work: "The Classic of Mountains and Seas",
+    section: "Classic of the Great Wilderness: North",
+    text: `
+      <p>
+        At a distant mountain lived a powerful being commonly called
+        Zhulong, the Torch Dragon. It had a human face and the long,
+        red body of a serpent.
+      </p>
+
+      <p>
+        The movements and breath of this being were connected with
+        the order of the world. When its eyes opened, there was day;
+        when they closed, there was night. Its breathing was
+        associated with the changing wind and seasons, making the
+        creature seem less like an animal than a living force of
+        nature.
+      </p>
+    `,
+    moral:
+      "The Torch Dragon imagines nature as animate and immense. Day, night, weather, and season are not merely background conditions but powers before which humanity is very small.",
+    sourceUrl: "https://ctext.org/shan-hai-jing/da-huang-bei-jing",
+    sourceLabel:
+      "Classic of the Great Wilderness: North — Chinese Text Project"
+  },
+
+  {
+    title: "Gun, Yu, and the Great Flood",
+    work: "The Classic of Mountains and Seas",
+    section: "Classic of the Regions Within the Seas",
+    text: `
+      <p>
+        During the great flood, Gun attempted to hold back the waters
+        by taking the self-renewing soil of the Supreme Divinity
+        without permission. Before he could complete the work, he was
+        executed.
+      </p>
+
+      <p>
+        From Gun came Yu, who inherited the immense task. Yu was
+        commanded to spread the special soil and establish order
+        across the flooded lands. Other traditions expanded this
+        account into the famous story of Yu controlling the waters
+        through years of labor.
+      </p>
+    `,
+    moral:
+      "A necessary goal does not make every method wise. The movement from Gun to Yu also suggests that one generation's failed work can become the beginning of another generation's solution.",
+    sourceUrl: "https://ctext.org/shan-hai-jing/hai-nei-jing",
+    sourceLabel:
+      "Classic of the Regions Within the Seas — Chinese Text Project"
+  },
+
+  {
+    title: "Li Ji and the Great Serpent",
+    work: "In Search of the Supernatural",
+    section: "The story of Li Ji",
+    text: `
+      <p>
+        A great serpent lived in the mountains of the ancient Min
+        region. The creature repeatedly demanded that a young girl
+        be offered to it, and families were paid to surrender their
+        daughters. For years, the people obeyed out of fear.
+      </p>
+
+      <p>
+        Li Ji, a young woman from a poor family, volunteered to face
+        the serpent. She prepared food to draw it from its cave,
+        brought a sword, and took a dog with her. When the serpent
+        appeared, the dog attacked and Li Ji struck until the monster
+        was killed. She then found the remains of the earlier victims
+        and condemned them for having allowed themselves to be
+        devoured.
+      </p>
+    `,
+    moral:
+      "Li Ji succeeds because she prepares, acts, and refuses to accept a custom built upon fear. The story celebrates courage while also criticizing a community that continually sacrificed its vulnerable members.",
+    sourceUrl: "https://ctext.org/wiki.pl?if=en&res=839038",
+    sourceLabel:
+      "In Search of the Supernatural — Chinese Text Project"
+  },
+
+  {
+    title: "Song Dingbo Sells a Ghost",
+    work: "In Search of the Supernatural",
+    section: "The story of Song Dingbo",
+    text: `
+      <p>
+        Song Dingbo met a ghost while traveling at night. When the
+        ghost asked who he was, Song claimed that he too was a ghost.
+        The two agreed to travel together, sometimes carrying one
+        another along the road.
+      </p>
+
+      <p>
+        Song carefully questioned his companion and learned that
+        ghosts disliked human saliva. When they approached a market,
+        he carried the ghost on his back. The ghost transformed into
+        a goat, but Song spat upon it so that it could not change
+        back. He then sold it and continued on his way with the
+        money.
+      </p>
+    `,
+    moral:
+      "Fear loses some of its power when it is examined carefully. Song survives not through strength but by remaining calm, gathering information, and turning the supernatural creature's own rules against it.",
+    sourceUrl: "https://ctext.org/wiki.pl?if=en&res=839038",
+    sourceLabel:
+      "In Search of the Supernatural — Chinese Text Project"
+  },
+
+  {
+    title: "The Swords of Gan Jiang and Moye",
+    work: "In Search of the Supernatural",
+    section: "The story of Gan Jiang, Moye, and their son",
+    text: `
+      <p>
+        Gan Jiang and his wife Moye were ordered to forge exceptional
+        swords for a king. Knowing that the suspicious ruler might
+        kill him, Gan Jiang left one sword and a message for the son
+        his wife would raise after his death.
+      </p>
+
+      <p>
+        Years later, the son learned what had happened and sought to
+        avenge his father. A mysterious stranger offered to complete
+        the task but demanded the young man's head and sword as proof
+        of trust. The son accepted. The stranger brought the head to
+        the king and ultimately sacrificed himself as well so that
+        the act of vengeance could be completed.
+      </p>
+    `,
+    moral:
+      "The story presents loyalty and vengeance at their most extreme. It honors promises kept at terrible cost while also revealing how a ruler's cruelty can create a cycle in which nearly everyone is destroyed.",
+    sourceUrl: "https://ctext.org/wiki.pl?if=en&res=839038",
+    sourceLabel:
+      "In Search of the Supernatural — Chinese Text Project"
+  },
+
+  {
+    title: "Han Ping and the Entwined Trees",
+    work: "In Search of the Supernatural",
+    section: "The story of Han Ping and his wife",
+    text: `
+      <p>
+        A ruler of Song took the wife of Han Ping for himself. Han
+        Ping was imprisoned and died, while his wife secretly sent a
+        letter expressing her determination not to abandon him.
+      </p>
+
+      <p>
+        She later took her own life and asked to be buried beside her
+        husband. The ruler refused and ordered the two graves placed
+        apart. Before long, trees grew from the graves. Their trunks
+        leaned toward one another, their branches intertwined, and
+        birds were said to live and cry within them.
+      </p>
+    `,
+    moral:
+      "Power may control people and even separate their graves, but it cannot always command how they are remembered. The entwined trees turn an act of oppression into a lasting image of loyalty.",
+    sourceUrl: "https://ctext.org/wiki.pl?if=en&res=839038",
+    sourceLabel:
+      "In Search of the Supernatural — Chinese Text Project"
+  },
+
+  {
+    title: "Dong Yong and the Woman from Heaven",
+    work: "In Search of the Supernatural",
+    section: "The story of Dong Yong",
+    text: `
+      <p>
+        Dong Yong was so poor that, after his father died, he sold
+        his own labor in order to pay for a proper burial. While
+        traveling to begin his service, he met a woman who asked to
+        become his wife.
+      </p>
+
+      <p>
+        She was an extraordinarily skilled weaver and produced enough
+        fine cloth to repay Dong Yong's debt in a remarkably short
+        time. When the obligation was fulfilled, she revealed that
+        Heaven had sent her to help because of his devotion to his
+        father. Her task complete, she departed.
+      </p>
+    `,
+    moral:
+      "The account reflects the traditional virtue of filial devotion, but its broader pattern is also one of unexpected assistance: sincere responsibility may inspire help from places a person could not have predicted.",
+    sourceUrl: "https://ctext.org/wiki.pl?if=en&res=839038",
+    sourceLabel:
+      "In Search of the Supernatural — Chinese Text Project"
+  },
+
+  {
+    title: "Purple Jade Returns",
+    work: "In Search of the Supernatural",
+    section: "The story of Purple Jade and Han Chong",
+    text: `
+      <p>
+        Purple Jade, a daughter of the king of Wu, loved a young man
+        named Han Chong. When her father would not permit their
+        marriage, grief overwhelmed her and she died while Han Chong
+        was away.
+      </p>
+
+      <p>
+        After he returned and learned of her death, Han Chong went to
+        her grave. Purple Jade's spirit appeared and welcomed him.
+        She gave him a pearl as a keepsake. Later, when her mother
+        saw the pearl and heard what had happened, she wished to see
+        her daughter. The spirit appeared again, but vanished when
+        her grieving mother tried to embrace her.
+      </p>
+    `,
+    moral:
+      "A keepsake may confirm that love existed, but it cannot restore everything that was lost. The story treats grief as a meeting point between memory, longing, and the supernatural.",
+    sourceUrl: "https://ctext.org/wiki.pl?if=en&res=839038",
+    sourceLabel:
+      "In Search of the Supernatural — Chinese Text Project"
+  }
+];
+
+    /*
+      These are original, folklore-inspired reflection prompts.
+      They are not presented as authentic temple divination texts.
+    */
+    const fortunes = [
+      {
+        number: 1,
+        title: "The Opening Gate",
+        poem: "A quiet gate turns on a patient hinge. Beyond it, the road is already waiting.",
+        reading: "A new opportunity may be near. Begin simply instead of waiting for complete certainty."
+      },
+      {
+        number: 2,
+        title: "The Patient River",
+        poem: "Water does not argue with the stone, yet over time it finds a passage.",
+        reading: "Steady effort will serve you better than force. Allow progress to be gradual."
+      },
+      {
+        number: 3,
+        title: "The Returning Bird",
+        poem: "The bird circles far from home, then recognizes the branch it once knew.",
+        reading: "Something familiar may deserve another look. Return with the wisdom you gained while away."
+      },
+      {
+        number: 4,
+        title: "Lantern in the Fog",
+        poem: "One lantern cannot reveal the whole road, but it can reveal the next step.",
+        reading: "Do not demand every answer today. Focus on the nearest useful action."
+      },
+      {
+        number: 5,
+        title: "The Hidden Seed",
+        poem: "Beneath cold soil, the seed prepares a green answer to winter.",
+        reading: "Your work may not yet be visible. Continue nurturing it before judging the result."
+      },
+      {
+        number: 6,
+        title: "The Empty Cup",
+        poem: "The full cup receives nothing. The empty cup welcomes rain.",
+        reading: "Approach a conversation or problem with curiosity. Being willing to learn creates room for change."
+      },
+      {
+        number: 7,
+        title: "Two Bridges",
+        poem: "One bridge is built from timber; another is built from a sincere word.",
+        reading: "Connection will be important today. A thoughtful message may repair more than you expect."
+      },
+      {
+        number: 8,
+        title: "The Turning Wind",
+        poem: "The kite does not command the wind. It changes its angle and rises.",
+        reading: "Conditions may shift unexpectedly. Adaptation is not surrender—it is skill."
+      },
+      {
+        number: 9,
+        title: "The Unpolished Stone",
+        poem: "The stone does not know its brightness until patient hands reveal it.",
+        reading: "A talent needs practice before it feels natural. Give yourself permission to be unfinished."
+      },
+      {
+        number: 10,
+        title: "Plum Blossom Snow",
+        poem: "In the coldest air, the plum branch keeps a small promise of spring.",
+        reading: "Resilience does not need to be loud. Protect one hopeful habit today."
+      },
+      {
+        number: 11,
+        title: "The Shared Table",
+        poem: "A single bowl feeds one person. A welcoming table feeds a household.",
+        reading: "Generosity strengthens relationships. Offer time, attention, knowledge, or encouragement."
+      },
+      {
+        number: 12,
+        title: "The Resting Moon",
+        poem: "Even the moon disappears for a time, yet no one believes it is gone forever.",
+        reading: "Rest and withdrawal can be part of a cycle. Make space to recover without guilt."
+      }
+    ];
+
+
+    /*
+      Daily Analects passages. Classical Chinese excerpts are from the
+      Analects tradition; English renderings here are original translations
+      for this site, not quotations of the anthology's English translation.
+      The anthology is cited as the collection used for the reading.
+    */
+    const analects = [
+      { chapter: "學而 · 1.1", chinese: "學而時習之，不亦說乎？", english: "To learn, and at due times put what one has learned into practice—is that not a pleasure?" },
+      { chapter: "學而 · 1.4", chinese: "吾日三省吾身。", english: "Each day I examine myself on three counts." },
+      { chapter: "學而 · 1.6", chinese: "行有餘力，則以學文。", english: "When one has strength to spare after putting virtue into practice, one may turn to the arts of learning." },
+      { chapter: "為政 · 2.11", chinese: "溫故而知新，可以為師矣。", english: "Review the old and discover the new; such a person may be a teacher." },
+      { chapter: "為政 · 2.15", chinese: "學而不思則罔，思而不學則殆。", english: "Learning without thought leaves one bewildered; thought without learning leads one into danger." },
+      { chapter: "里仁 · 4.17", chinese: "見賢思齊焉，見不賢而內自省也。", english: "When you see someone worthy, aspire to equal them; when you see someone unworthy, examine yourself." },
+      { chapter: "雍也 · 6.23", chinese: "知者樂水，仁者樂山。", english: "The wise find joy in water; the humane find joy in mountains." },
+      { chapter: "述而 · 7.22", chinese: "三人行，必有我師焉。", english: "Among any three people walking together, there is surely one who can teach me." },
+      { chapter: "述而 · 7.36", chinese: "君子坦蕩蕩，小人長戚戚。", english: "The exemplary person is open and at ease; the petty person is forever troubled." },
+      { chapter: "子罕 · 9.17", chinese: "歲寒，然後知松柏之後凋也。", english: "Only when the year grows cold do we see that pine and cypress are the last to wither." },
+      { chapter: "顏淵 · 12.22", chinese: "君子成人之美，不成人之惡。", english: "The exemplary person helps others bring their good qualities to completion, not their faults." },
+      { chapter: "衛靈公 · 15.24", chinese: "己所不欲，勿施於人。", english: "What you do not wish for yourself, do not impose upon others." }
+    ];
+
+    function displayAnalect() {
+      const index = (getDayOfYear(today) - 1) % analects.length;
+      const passage = analects[index];
+      document.querySelector("#analects-chinese").textContent = passage.chinese;
+      document.querySelector("#analects-translation").textContent = `“${passage.english}”`;
+      document.querySelector("#analects-index").textContent = passage.chapter;
+    }
+
+    const currentDateElement = document.querySelector("#current-date");
+const storyTitleElement = document.querySelector("#story-title");
+const storyTextElement = document.querySelector("#story-text");
+const storyMoralElement = document.querySelector("#story-moral");
+const storySourceLink = document.querySelector("#story-source-link");
+
+
+    const drawButton = document.querySelector("#draw-button");
+    const stickArt = document.querySelector("#stick-art");
+    const fortuneResult = document.querySelector("#fortune-result");
+    const fortuneNumber = document.querySelector("#fortune-number");
+    const fortuneTitle = document.querySelector("#fortune-title");
+    const fortunePoem = document.querySelector("#fortune-poem");
+    const fortuneReading = document.querySelector("#fortune-reading");
+
+    const today = new Date();
+
+    /*
+      Build a local date key so the visitor gets a new reading at
+      midnight in their own time zone.
+    */
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const dateKey = `${year}-${month}-${day}`;
+    const storageKey = `fortune-and-folklore-${dateKey}`;
+
+    function getDayOfYear(date) {
+      const startOfYear = Date.UTC(date.getFullYear(), 0, 0);
+      const currentDay = Date.UTC(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate()
+      );
+
+      return Math.floor((currentDay - startOfYear) / 86400000);
+    }
+
+    function displayDate() {
+      currentDateElement.dateTime = dateKey;
+      currentDateElement.textContent = new Intl.DateTimeFormat("en", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      }).format(today);
+    }
+
+function displayStory() {
+  const dayOfYear = getDayOfYear(today);
+  const storyIndex = (dayOfYear - 1) % stories.length;
+  const story = stories[storyIndex];
+
+  storyTitleElement.textContent = story.title;
+  storyTextElement.innerHTML = story.text;
+  storyMoralElement.textContent = story.moral;
+
+  storySourceLink.href = story.sourceUrl;
+  storySourceLink.textContent = story.sourceLabel;
+
+  /*
+    Adds additional context for screen-reader and search-engine users.
+  */
+  storySourceLink.setAttribute(
+    "aria-label",
+    `Read ${story.title} in ${story.work}, ${story.section}`
+  );
+}
+
+
+    function getRandomFortune() {
+      const randomValues = new Uint32Array(1);
+      window.crypto.getRandomValues(randomValues);
+
+      const index = randomValues[0] % fortunes.length;
+      return fortunes[index];
+    }
+
+    function showFortune(fortune) {
+      fortuneNumber.textContent =
+        `Stick ${String(fortune.number).padStart(2, "0")}`;
+
+      fortuneTitle.textContent = fortune.title;
+      fortunePoem.textContent = fortune.poem;
+      fortuneReading.textContent = fortune.reading;
+
+      stickArt.hidden = true;
+      fortuneResult.hidden = false;
+
+      drawButton.textContent = "Today’s stick has been drawn";
+      drawButton.disabled = true;
+    }
+
+    function loadSavedFortune() {
+      try {
+        const savedFortune = localStorage.getItem(storageKey);
+
+        if (!savedFortune) {
+          return;
+        }
+
+        const parsedFortune = JSON.parse(savedFortune);
+        showFortune(parsedFortune);
+      } catch (error) {
+        console.warn("The saved fortune could not be loaded.", error);
+        localStorage.removeItem(storageKey);
+      }
+    }
+
+let isDrawing = false;
+
+drawButton.addEventListener("click", () => {
+  if (isDrawing) {
+    return;
+  }
+
+  isDrawing = true;
+  drawButton.disabled = true;
+  drawButton.textContent = "Shaking the sticks…";
+
+  const fortune = getRandomFortune();
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  stickArt.classList.remove("is-shaking");
+
+  /*
+    Force the browser to recognize the removed class. This allows the
+    animation to restart reliably if the drawing behavior is changed
+    later to permit additional draws.
+  */
+  void stickArt.offsetWidth;
+
+  stickArt.classList.add("is-shaking");
+
+  /*
+    A brief vibration works on some Android devices. Browsers that do
+    not support vibration will simply ignore this.
+  */
+  if (!reducedMotion && "vibrate" in navigator) {
+    navigator.vibrate([80, 45, 80, 45, 110]);
+  }
+
+  const revealDelay = reducedMotion ? 150 : 1400;
+
+  window.setTimeout(() => {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(fortune));
+    } catch (error) {
+      console.warn("The fortune could not be saved.", error);
+    }
+
+    stickArt.classList.remove("is-shaking");
+    showFortune(fortune);
+    isDrawing = false;
+  }, revealDelay);
+});
+
+
+    displayDate();
+    displayStory();
+    displayAnalect();
+    loadSavedFortune();
+  </script>
+</body>
+</html>
